@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700,800");
+
+:root {
+  --primary: #2b6777;
+  --accent: #52ab98;
+  --soft: #c8d8e4;
+  --white: #ccc;
+  --bg: #f2f2f2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  padding: 1.2rem;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  letter-spacing: 0.25em;
+  line-height: 1.1;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.by {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1em 0.45em;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+.board {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  gap: 20px;
+}
+
+.list {
+  background-color: var(--soft);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 30%;
+  min-height: 400px;
+  box-shadow: 0 4px 8px rgba(43, 103, 119, 0.25);
+  transition: background-color 0.2s, outline-color 0.2s;
+  outline: 2px solid transparent;
+}
+
+.list.over {
+  background-color: var(--soft);
+  outline: 3px solid var(--accent);
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.list-header h2 {
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.count {
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.cards {
+  min-height: 60px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: var(--white);
+  color: var(--primary);
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(43, 103, 119, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.dragging {
+  opacity: 0.4;
+  transform: scale(1.03);
+}
+
+.card-delete {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.card:hover .card-delete {
+  opacity: 1;
+}
+
+.card-delete:hover {
+  color: #e53e3e;
+}
+
+.empty {
+  color: var(--accent);
+  font-size: 0.85rem;
+  padding: 1rem 0;
+}
+
+.add-card {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.add-card input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--white);
+}
+
+.add-card input:focus {
+  outline: 2px solid var(--accent);
+  border-color: transparent;
+}
+
+.add-card button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  width: 40px;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-card button:hover:not(:disabled) {
+  background: var(--accent);
+}
+
+.add-card button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  margin-top: 1.5rem;
+  background: none;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.reset-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .list {
+    width: 90%;
+  }
+
+  .card-delete {
+    opacity: 1;
+  }
+}
